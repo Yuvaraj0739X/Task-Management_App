@@ -1,38 +1,226 @@
-.App {
-  text-align: center;
+:root {
+  --primary-color: #4a6fa5;
+  --text-color: #333;
+  --bg-color: #f5f5f5;
+  --sidebar-bg: #f0f2f5;
+  --task-bg: #fff;
+  --border-color: #ddd;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.dark-mode {
+  --primary-color: #6b8cba;
+  --text-color: #f0f0f0;
+  --bg-color: #1a1a1a;
+  --sidebar-bg: #252525;
+  --task-bg: #2d2d2d;
+  --border-color: #444;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
   display: flex;
-  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: var(--sidebar-bg);
+  padding: 20px;
+  border-right: 1px solid var(--border-color);
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 30px;
+}
+
+.sidebar-header h1 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.menu-item {
+  padding: 10px 15px;
+  margin: 5px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.menu-item.active {
+  background-color: var(--primary-color);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.main-content {
+  flex: 1;
+  padding: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header h2 {
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+header p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.dark-mode header p {
+  color: #aaa;
+}
+
+.content-section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.content-section h3 {
+  margin-bottom: 10px;
+}
+
+.content-section p {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.dark-mode .content-section p {
+  color: #aaa;
+}
+
+.task-form {
+  margin: 20px 0;
+}
+
+.task-form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: var(--task-bg);
+  color: var(--text-color);
+}
+
+.form-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.form-controls input[type="date"],
+.form-controls select {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: var(--task-bg);
+  color: var(--text-color);
+}
+
+.form-controls button {
+  padding: 10px 15px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.task-list {
+  margin-top: 20px;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: var(--task-bg);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: move;
+}
+
+.dark-mode .task {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.task-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+}
+
+.task-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.task-text {
+  font-size: 1rem;
+}
+
+.task-text.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.task-date {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.priority-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.delete-task {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #888;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.delete-task:hover {
+  color: #ff6b6b;
+}
+
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.dark-mode-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .dark-mode-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
